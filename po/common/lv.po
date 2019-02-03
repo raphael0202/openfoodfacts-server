@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lv\n"
 "Project-Id-Version: openfoodfacts\n"
-"PO-Revision-Date: 2018-10-16 19:35\n"
+"PO-Revision-Date: 2019-01-03 16:45\n"
 "Language-Team: Latvian\n"
 "Last-Translator: pierreslamich <pierre.slamich@gmail.com>\n"
 "POT-Creation-Date: \n"
@@ -14,16 +14,6 @@ msgstr ""
 "X-Crowdin-Project: openfoodfacts\n"
 "X-Crowdin-Language: lv\n"
 "X-Crowdin-File: /master/po/common/common.pot\n"
-
-#. put here the language tag ("fr" for French, "ja" for Japanese, etc)
-msgctxt ":langtag"
-msgid ":langtag"
-msgstr "lv"
-
-#. put here the language name ("French", "Japanese", etc)
-msgctxt ":langname"
-msgid ":langname"
-msgstr "Latvian"
 
 msgctxt "1_product"
 msgid "1 product"
@@ -321,33 +311,6 @@ msgctxt "codes_s"
 msgid "Code"
 msgstr "Kods"
 
-msgctxt "column_obsolete_do_not_translate_for_reference_only"
-msgid "<a href=\"/\"><img id=\"logo\" src=\"/images/misc/openfoodfacts-logo-en.png\" width=\"178\" height=\"144\" alt=\"<<site_name>>\" /></a>\n\n"
-"<p><<site_name>> gathers information and data on food products from around the world.</p>\n\n"
-"<select_country>\n\n"
-"<p>\n"
-"→ <a href=\"/brands\">Brands</a><br />\n"
-"→ <a href=\"/categories\">Categories</a><br/>\n"
-"</p>\n\n"
-"<p>Food product information (photos, ingredients, nutrition facts etc.) is collected in a collaborative way\n"
-"and is made available to everyone and for all uses in a free and open database.</p>\n\n\n"
-"<p>Find us also on:</p>\n\n"
-"<p>\n"
-"→ <a href=\"https://en.wiki.openfoodfacts.org\">our wiki</a><br />\n"
-"→ <a href=\"https://twitter.com/openfoodfacts\">Twitter</a><br/>\n"
-"→ <a href=\"https://plus.google.com/u/0/110748322211084668559/\">Google+</a><br />\n"
-"→ <a href=\"https://www.facebook.com/OpenFoodFacts\">Facebook</a><br />\n"
-"+ <a href=\"https://www.facebook.com/groups/openfoodfacts/\">contributors group</a><br />\n"
-"</p>\n\n"
-"<p>iPhone and iPad app on the App Store:</p>\n\n"
-"<a href=\"https://itunes.apple.com/en/app/open-food-facts/id588797948\"><img src=\"/images/misc/Available_on_the_App_Store_Badge_EN_135x40.png\" alt=\"Available on the App Store\" width=\"135\" height=\"40\" /></a><br/>\n\n"
-"<p>Android app on Google Play:</p>\n\n"
-"<a href=\"https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner\"><img src=\"/images/misc/android-app-on-google-play-en_app_rgb_wo_135x47.png\" alt=\"Available on Google Play\" width=\"135\" height=\"47\" /></a><br/>\n"
-"<a href=\"https://world.openfoodfacts.org/files/off.apk\">apk</a>\n\n"
-"<p>Windows Phone app:</p>\n\n"
-"<a href=\"https://www.windowsphone.com/en-us/store/app/openfoodfacts/5d7cf939-cfd9-4ac0-86d7-91b946f4df34\"><img src=\"/images/misc/154x40_WP_Store_blk.png\" alt=\"Windows Phone Store\" width=\"154\" height=\"40\" /></a><br/>\n\n\n"
-msgstr ""
-
 msgctxt "completed_n_missions"
 msgid "completed %d missions:"
 msgstr "pabeigti %d komandējumi:"
@@ -585,10 +548,6 @@ msgctxt "error_invalid_address"
 msgid "Invalid address."
 msgstr "Kļūda! Adrese ir tikusi kļūdaini ievadīta"
 
-msgctxt "error_invalid_csrf_token"
-msgid "Invalid CSRF token."
-msgstr "Nederīgs CSRF marķieris."
-
 msgctxt "error_invalid_email"
 msgid "Invalid e-mail address"
 msgstr "Nederīga e-pasta adrese"
@@ -697,6 +656,7 @@ msgctxt "footer_blog"
 msgid "<<site_name>> blog"
 msgstr "<<site_name>> emuārs"
 
+# Do not translate
 msgctxt "footer_blog_link"
 msgid "https://en.blog.openfoodfacts.org"
 msgstr "https://en.blog.openfoodfacts.org"
@@ -705,14 +665,16 @@ msgctxt "footer_code_of_conduct"
 msgid "Code of conduct"
 msgstr "Rīcības kodekss"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_code_of_conduct_link"
 msgid "/code-of-conduct"
-msgstr "/ricibas-kodekss"
+msgstr ""
 
 msgctxt "footer_data"
 msgid "Data"
 msgstr "Dati"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_data_link"
 msgid "/data"
 msgstr "/data"
@@ -725,14 +687,16 @@ msgctxt "footer_faq"
 msgid "Frequently asked questions"
 msgstr "Bieži uzdotie jautājumi"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_faq_link"
 msgid "/faq"
-msgstr "/ faq"
+msgstr "/faq"
 
 msgctxt "footer_translators"
 msgid "Translators"
 msgstr "Tulkotāji"
 
+# Do not translate
 msgctxt "footer_translators_link"
 msgid "/cgi/top_translators.pl"
 msgstr "/cgi/top_translators.pl"
@@ -761,6 +725,7 @@ msgctxt "footer_legal"
 msgid "Legal"
 msgstr "Juridiski"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_legal_link"
 msgid "/legal"
 msgstr "/legal"
@@ -769,9 +734,10 @@ msgctxt "footer_press"
 msgid "Press"
 msgstr "Nospiediet"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_press_link"
 msgid "/press"
-msgstr "/nospiediet"
+msgstr ""
 
 msgctxt "footer_tagline"
 msgid "A collaborative, free and open database of food products from around the world."
@@ -781,6 +747,7 @@ msgctxt "footer_terms"
 msgid "Terms of use"
 msgstr "Izmantošanas noteikumi"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_terms_link"
 msgid "/terms-of-use"
 msgstr "/terms-of-use"
@@ -789,14 +756,16 @@ msgctxt "footer_who_we_are"
 msgid "Who we are"
 msgstr "Kas mēs esam"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_who_we_are_link"
 msgid "/who-we-are"
-msgstr "/kas mēs esam"
+msgstr ""
 
 msgctxt "footer_wiki"
 msgid "<<site_name>> wiki (en)"
 msgstr "<<site_name>> wiki (en)"
 
+# Do not translate
 msgctxt "footer_wiki_link"
 msgid "https://en.wiki.openfoodfacts.org"
 msgstr "https://en.wiki.openfoodfacts.org"
@@ -831,19 +800,6 @@ msgstr ""
 
 msgctxt "graphs_and_maps"
 msgid "Graphs and maps"
-msgstr ""
-
-msgctxt "header"
-msgid "<meta property=\"fb:admins\" content=\"706410516\" />\n"
-"<meta property=\"og:site_name\" content=\"<<site_name>> - the free and open food products information database\"/>\n\n"
-"<script type=\"text/javascript\">\n"
-"  var uvOptions = {};\n"
-"  (function() {\n"
-"\tvar uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;\n"
-"\tuv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/jQrwafQ94nbEbRWsznm6Q.js';\n"
-"\tvar s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);\n"
-"  })();\n"
-"</script>\n\n\n"
 msgstr ""
 
 msgctxt "hello"
@@ -1135,14 +1091,6 @@ msgctxt "lang_nl_be"
 msgid "Dutch"
 msgstr "Holandiešu valodā"
 
-msgctxt "lang_note"
-msgid "Language most present and most highlighted on the product"
-msgstr "Valoda, kas ir visizcilākā un visvairāk uzsvērta uz produktu"
-
-msgctxt "lang_other"
-msgid "other language"
-msgstr "cita valoda"
-
 msgctxt "lang_pl"
 msgid "Polish"
 msgstr "Poļu valoda"
@@ -1186,6 +1134,14 @@ msgstr "Vjetnamiešu valoda"
 msgctxt "lang_zh"
 msgid "Chinese"
 msgstr "Ķīniešu valoda"
+
+msgctxt "lang_other"
+msgid "other language"
+msgstr "cita valoda"
+
+msgctxt "lang_note"
+msgid "Language most present and most highlighted on the product"
+msgstr "Valoda, kas ir visizcilākā un visvairāk uzsvērta uz produktu"
 
 msgctxt "language"
 msgid "en-US"
@@ -1339,25 +1295,28 @@ msgctxt "menu_add_a_product"
 msgid "Add a product"
 msgstr "Pievienot produktu"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "menu_add_a_product_link"
 msgid "/add-a-product"
-msgstr "/pievienot produktu"
+msgstr ""
 
 msgctxt "menu_contribute"
 msgid "Contribute"
 msgstr "Veicināt / atbalstīt"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "menu_contribute_link"
 msgid "/contribute"
-msgstr "/veicināt / atbalstīt"
+msgstr ""
 
 msgctxt "menu_discover"
 msgid "Discover"
 msgstr "Atklāj"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "menu_discover_link"
 msgid "/discover"
-msgstr "/atklāj"
+msgstr ""
 
 msgctxt "mission_"
 msgid "Mission: "
@@ -1390,11 +1349,6 @@ msgstr "moderate"
 msgctxt "moderate_quantity"
 msgid "moderate quantity"
 msgstr "mērens daudzums"
-
-# Please keep the same syntax and translate only the months
-msgctxt "months"
-msgid "['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']"
-msgstr "[\"Janvāris\", \"Februāris\", \"Marts\", \"Aprīlis\", \"Maijs\", \"Jūnijs\", \"Jūlijs\", \"Augusts\", \"Septembris\", \"Oktobris\", \"Novembris\", \"Decembris\"]"
 
 msgctxt "move_images_to_another_product"
 msgid "Move the images to another product"
@@ -1472,10 +1426,10 @@ msgctxt "nutrient_levels_info"
 msgid "Nutrient levels for 100 g"
 msgstr "Uzturvielu līmenis uz 100 g:"
 
-# Ensure it is the same translation as in the translation in the tag file. If unsure, DO NOT TRANSLATE, otherwise it will break the site
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "nutrient_levels_link"
 msgid "/nutrient-levels"
-msgstr "/ uzturvielu līmeņi"
+msgstr ""
 
 msgctxt "nutrient_levels_p"
 msgid "nutrient levels"
@@ -2328,8 +2282,17 @@ msgctxt "serving_size"
 msgid "Serving size"
 msgstr "Porcijas lielums"
 
+msgctxt "serving_size_prepared"
+msgid ""
+msgstr ""
+""
+
 msgctxt "serving_size_example"
 msgid "60 g, 12 oz, 20cl, 2 fl oz"
+msgstr ""
+
+msgctxt "serving_size_note"
+msgid "If the nutrition facts table contains values for the prepared product, indicate the total serving size of the prepared product (including added water or milk)."
 msgstr ""
 
 msgctxt "session_title"
@@ -2570,10 +2533,6 @@ msgctxt "website"
 msgid "Site or blog address"
 msgstr "Vietnes vai emuāra adrese"
 
-msgctxt "weekdays"
-msgid "['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']"
-msgstr "['Svētdiena Pirmdiena Otrdiena Trešdiena Ceturtdiena Piektdiena Sestdiena']"
-
 msgctxt "windows_phone_app_badge"
 msgid "<img src=\"/images/misc/154x40_WP_Store_blk.png\" alt=\"Windows Phone Store\" width=\"154\" height=\"40\" />"
 msgstr "<img src=\"/images/misc/154x40_WP_Store_blk.png\" alt=\"Windows Phone Store\" width=\"154\" height=\"40\" />"
@@ -2679,8 +2638,8 @@ msgid "This product page is not complete. You can help to complete it by editing
 msgstr "Šī produkta lapa nav pilnīga. Varat palīdzēt to aizpildīt, rediģējot to un pievienojot papildu datus no mūsu esošajiem fotoattēliem, vai arī fotografējot vairāk fotoattēlu, izmantojot programmu <a href=\"https://android.openfoodfacts.org\">Android</a> vai <a href=\"https://ios.openfoodfacts.org\">iPhone / iPad</a>. Paldies!"
 
 msgctxt "title_separator"
-msgid " — "
-msgstr " - "
+msgid " - "
+msgstr ""
 
 msgctxt "recent_changes"
 msgid "Recent Changes"
@@ -2790,6 +2749,7 @@ msgctxt "footer_partners"
 msgid "Partners"
 msgstr ""
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_partners_link"
 msgid "/partners"
 msgstr ""
@@ -2948,5 +2908,193 @@ msgstr ""
 
 msgctxt "additives_classes"
 msgid "Functions"
+msgstr ""
+
+msgctxt "photos_and_data_check"
+msgid "Photos and data check"
+msgstr ""
+
+msgctxt "photos_and_data_check_description"
+msgid "Product pages can be marked as checked by experienced contributors who verify that the most recent photos are selected and cropped, and that all the product data that can be inferred from the product photos has been filled and is correct."
+msgstr ""
+
+msgctxt "photos_and_data_checked"
+msgid "Photos and data checked"
+msgstr ""
+
+msgctxt "i_checked_the_photos_and_data"
+msgid "I checked the photos and data."
+msgstr ""
+
+msgctxt "i_checked_the_photos_and_data_again"
+msgid "I checked the photos and data again."
+msgstr ""
+
+msgctxt "last_check_dates_p"
+msgid "Last check dates"
+msgstr ""
+
+msgctxt "last_check_dates_s"
+msgid "Last check date"
+msgstr ""
+
+msgctxt "product_last_checked"
+msgid "Last check of product page on"
+msgstr ""
+
+msgctxt "product_other_information"
+msgid "Other information"
+msgstr ""
+
+msgctxt "producer_version_id"
+msgid "Producer version identifier"
+msgstr ""
+
+msgctxt "net_weight"
+msgid "Net weight"
+msgstr ""
+
+msgctxt "drained_weight"
+msgid "Drained weight"
+msgstr ""
+
+msgctxt "volume"
+msgid "Volume"
+msgstr ""
+
+msgctxt "other_information"
+msgid "Other information"
+msgstr ""
+
+msgctxt "conservation_conditions"
+msgid "Conservation conditions"
+msgstr ""
+
+msgctxt "recycling_instructions_to_recycle"
+msgid "Recycling instructions - To recycle"
+msgstr ""
+
+msgctxt "recycling_instructions_to_discard"
+msgid "Recycling instructions - To discard"
+msgstr ""
+
+msgctxt "checkers_products"
+msgid "Products checked by %s"
+msgstr ""
+
+msgctxt "checkers_without_products"
+msgid "Products not checked by %s"
+msgstr ""
+
+msgctxt "correctors_products"
+msgid "Products corrected by %s"
+msgstr ""
+
+msgctxt "correctors_without_products"
+msgid "Products not corrected by %s"
+msgstr ""
+
+msgctxt "editors_products"
+msgid "Products edited by %s"
+msgstr ""
+
+msgctxt "editors_without_products"
+msgid "Products not edited by %s"
+msgstr ""
+
+msgctxt "informers_products"
+msgid "Products completed by %s"
+msgstr ""
+
+msgctxt "informers_without_products"
+msgid "Products not completed by %s"
+msgstr ""
+
+msgctxt "photographers_products"
+msgid "Products photographed by %s"
+msgstr ""
+
+msgctxt "photographers_without_products"
+msgid "Products not photographed by %s"
+msgstr ""
+
+msgctxt "user_s_page"
+msgid "%s's page"
+msgstr ""
+
+msgctxt "checkers_products"
+msgid "Products checked by %s"
+msgstr ""
+
+msgctxt "checkers_without_products"
+msgid "Products not checked by %s"
+msgstr ""
+
+msgctxt "correctors_products"
+msgid "Products corrected by %s"
+msgstr ""
+
+msgctxt "correctors_without_products"
+msgid "Products not corrected by %s"
+msgstr ""
+
+msgctxt "editors_products"
+msgid "Products edited by %s"
+msgstr ""
+
+msgctxt "editors_without_products"
+msgid "Products not edited by %s"
+msgstr ""
+
+msgctxt "informers_products"
+msgid "Products completed by %s"
+msgstr ""
+
+msgctxt "informers_without_products"
+msgid "Products not completed by %s"
+msgstr ""
+
+msgctxt "photographers_products"
+msgid "Products photographed by %s"
+msgstr ""
+
+msgctxt "photographers_without_products"
+msgid "Products not photographed by %s"
+msgstr ""
+
+msgctxt "user_s_page"
+msgid "%s's page"
+msgstr ""
+
+msgctxt "obsolete"
+msgid "The product is no longer sold."
+msgstr ""
+
+msgctxt "obsolete_since_date"
+msgid "Withdrawal date"
+msgstr ""
+
+msgctxt "obsolete_since_date_note"
+msgid "Format: YYYY or YYYY-MM"
+msgstr ""
+
+msgctxt "obsolete_warning"
+msgid "Important note: this product is no longer sold. The data is kept for reference only. This product does not appear in regular searches and is not taken into account for statistics."
+msgstr ""
+
+msgctxt "get_the_app"
+msgid "Get the app"
+msgstr ""
+
+msgctxt "get_the_app_android"
+msgid "Get the Android app"
+msgstr ""
+
+msgctxt "get_the_app_iphone"
+msgid "Get the iPhone app"
+msgstr ""
+
+msgctxt "get_the_app_ipad"
+msgid "Get the iPad app"
 msgstr ""
 

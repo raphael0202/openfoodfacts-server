@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_HK\n"
 "Project-Id-Version: openfoodfacts\n"
-"PO-Revision-Date: 2018-10-11 19:21\n"
+"PO-Revision-Date: 2019-01-03 16:26\n"
 "Language-Team: Chinese Traditional, Hong Kong\n"
 "Last-Translator: pierreslamich <pierre.slamich@gmail.com>\n"
 "POT-Creation-Date: \n"
@@ -14,16 +14,6 @@ msgstr ""
 "X-Crowdin-Project: openfoodfacts\n"
 "X-Crowdin-Language: zh-HK\n"
 "X-Crowdin-File: /master/po/common/common.pot\n"
-
-#. put here the language tag ("fr" for French, "ja" for Japanese, etc)
-msgctxt ":langtag"
-msgid ":langtag"
-msgstr "zh-hk"
-
-#. put here the language name ("French", "Japanese", etc)
-msgctxt ":langname"
-msgid ":langname"
-msgstr "Chinese Traditional"
 
 msgctxt "1_product"
 msgid "1 product"
@@ -131,7 +121,7 @@ msgstr "所有的任務"
 
 msgctxt "allergens"
 msgid "Substances or products causing allergies or intolerances"
-msgstr "物品造成過敏"
+msgstr "成分或产品可能导致过敏或不耐受"
 
 msgctxt "allergens_p"
 msgid "allergens"
@@ -190,7 +180,7 @@ msgstr "縱軸"
 
 msgctxt "barcode"
 msgid "Barcode"
-msgstr "條碼"
+msgstr "条形码"
 
 msgctxt "barcode_number"
 msgid "Barcode number:"
@@ -242,7 +232,7 @@ msgstr "由"
 
 msgctxt "categories"
 msgid "Categories"
-msgstr "類別"
+msgstr "类别"
 
 msgctxt "categories_example"
 msgid "Sardines in olive oil, Orange juice from concentrate"
@@ -320,33 +310,6 @@ msgctxt "codes_s"
 msgid "Code"
 msgstr "代碼"
 
-msgctxt "column_obsolete_do_not_translate_for_reference_only"
-msgid "<a href=\"/\"><img id=\"logo\" src=\"/images/misc/openfoodfacts-logo-en.png\" width=\"178\" height=\"144\" alt=\"<<site_name>>\" /></a>\n\n"
-"<p><<site_name>> gathers information and data on food products from around the world.</p>\n\n"
-"<select_country>\n\n"
-"<p>\n"
-"→ <a href=\"/brands\">Brands</a><br />\n"
-"→ <a href=\"/categories\">Categories</a><br/>\n"
-"</p>\n\n"
-"<p>Food product information (photos, ingredients, nutrition facts etc.) is collected in a collaborative way\n"
-"and is made available to everyone and for all uses in a free and open database.</p>\n\n\n"
-"<p>Find us also on:</p>\n\n"
-"<p>\n"
-"→ <a href=\"https://en.wiki.openfoodfacts.org\">our wiki</a><br />\n"
-"→ <a href=\"https://twitter.com/openfoodfacts\">Twitter</a><br/>\n"
-"→ <a href=\"https://plus.google.com/u/0/110748322211084668559/\">Google+</a><br />\n"
-"→ <a href=\"https://www.facebook.com/OpenFoodFacts\">Facebook</a><br />\n"
-"+ <a href=\"https://www.facebook.com/groups/openfoodfacts/\">contributors group</a><br />\n"
-"</p>\n\n"
-"<p>iPhone and iPad app on the App Store:</p>\n\n"
-"<a href=\"https://itunes.apple.com/en/app/open-food-facts/id588797948\"><img src=\"/images/misc/Available_on_the_App_Store_Badge_EN_135x40.png\" alt=\"Available on the App Store\" width=\"135\" height=\"40\" /></a><br/>\n\n"
-"<p>Android app on Google Play:</p>\n\n"
-"<a href=\"https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner\"><img src=\"/images/misc/android-app-on-google-play-en_app_rgb_wo_135x47.png\" alt=\"Available on Google Play\" width=\"135\" height=\"47\" /></a><br/>\n"
-"<a href=\"https://world.openfoodfacts.org/files/off.apk\">apk</a>\n\n"
-"<p>Windows Phone app:</p>\n\n"
-"<a href=\"https://www.windowsphone.com/en-us/store/app/openfoodfacts/5d7cf939-cfd9-4ac0-86d7-91b946f4df34\"><img src=\"/images/misc/154x40_WP_Store_blk.png\" alt=\"Windows Phone Store\" width=\"154\" height=\"40\" /></a><br/>\n\n\n"
-msgstr ""
-
 msgctxt "completed_n_missions"
 msgid "completed %d missions:"
 msgstr "完成 %d 任務"
@@ -377,7 +340,7 @@ msgstr "校正者"
 
 msgctxt "countries"
 msgid "Countries where sold"
-msgstr "販售國"
+msgstr "可出售的国家"
 
 msgctxt "countries_note"
 msgid "Countries where the product is widely available (non including stores specialising in foreign products)"
@@ -584,10 +547,6 @@ msgctxt "error_invalid_address"
 msgid "Invalid address."
 msgstr "無效的地址。"
 
-msgctxt "error_invalid_csrf_token"
-msgid "Invalid CSRF token."
-msgstr "無效的 CSRF標識。"
-
 msgctxt "error_invalid_email"
 msgid "Invalid e-mail address"
 msgstr "無效的電子郵件地址。"
@@ -696,6 +655,7 @@ msgctxt "footer_blog"
 msgid "<<site_name>> blog"
 msgstr "<<site_name>> 部落格"
 
+# Do not translate
 msgctxt "footer_blog_link"
 msgid "https://en.blog.openfoodfacts.org"
 msgstr "https://en.wiki.openfoodfacts.org"
@@ -704,6 +664,7 @@ msgctxt "footer_code_of_conduct"
 msgid "Code of conduct"
 msgstr "行為準則"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_code_of_conduct_link"
 msgid "/code-of-conduct"
 msgstr "/code-of-conduct"
@@ -712,6 +673,7 @@ msgctxt "footer_data"
 msgid "Data"
 msgstr "資料"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_data_link"
 msgid "/data"
 msgstr "/data"
@@ -724,6 +686,7 @@ msgctxt "footer_faq"
 msgid "Frequently asked questions"
 msgstr "常見問答集"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_faq_link"
 msgid "/faq"
 msgstr "/faq"
@@ -732,6 +695,7 @@ msgctxt "footer_translators"
 msgid "Translators"
 msgstr ""
 
+# Do not translate
 msgctxt "footer_translators_link"
 msgid "/cgi/top_translators.pl"
 msgstr "/cgi/top_translators.pl"
@@ -760,6 +724,7 @@ msgctxt "footer_legal"
 msgid "Legal"
 msgstr "法律"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_legal_link"
 msgid "/legal"
 msgstr "/legal"
@@ -768,6 +733,7 @@ msgctxt "footer_press"
 msgid "Press"
 msgstr "投稿"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_press_link"
 msgid "/press"
 msgstr "/press"
@@ -780,6 +746,7 @@ msgctxt "footer_terms"
 msgid "Terms of use"
 msgstr "使用條款"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_terms_link"
 msgid "/terms-of-use"
 msgstr "/terms-of-use"
@@ -788,6 +755,7 @@ msgctxt "footer_who_we_are"
 msgid "Who we are"
 msgstr "我們是誰"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_who_we_are_link"
 msgid "/who-we-are"
 msgstr "/who-we-are"
@@ -796,6 +764,7 @@ msgctxt "footer_wiki"
 msgid "<<site_name>> wiki (en)"
 msgstr "<site_name> wiki (en)"
 
+# Do not translate
 msgctxt "footer_wiki_link"
 msgid "https://en.wiki.openfoodfacts.org"
 msgstr "http://en.wiki.openfoodfacts.org"
@@ -831,19 +800,6 @@ msgstr "圖片標題"
 msgctxt "graphs_and_maps"
 msgid "Graphs and maps"
 msgstr "圖片及地圖"
-
-msgctxt "header"
-msgid "<meta property=\"fb:admins\" content=\"706410516\" />\n"
-"<meta property=\"og:site_name\" content=\"<<site_name>> - the free and open food products information database\"/>\n\n"
-"<script type=\"text/javascript\">\n"
-"  var uvOptions = {};\n"
-"  (function() {\n"
-"\tvar uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;\n"
-"\tuv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/jQrwafQ94nbEbRWsznm6Q.js';\n"
-"\tvar s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);\n"
-"  })();\n"
-"</script>\n\n\n"
-msgstr "<meta property=\"fb:admins\" content=\"706410516\" /> <meta property=\"og:site_name\" content=\"<<site_name>>  - 自由開放的食品信息數據庫“/> <script type=\"text/javascript\"> var uvOptions = {};（function（）{var uv = document.createElement（'script'）; uv.type ='text / javascript'; uv .async = true; uv.src =（'https：'== document.location.protocol？'https：//'：'http：//'）+'widget.uservoice.com/jQrwafQ94nbEbRWsznm6Q.js'; var s = document.getElementsByTagName（'script'）[0]; s.parentNode.insertBefore（uv，s）;}）（）; </script>\n\n\n"
 
 msgctxt "hello"
 msgid "Hello"
@@ -1009,7 +965,7 @@ msgstr "已知營養成分"
 
 msgctxt "labels"
 msgid "Labels, certifications, awards"
-msgstr "標籤，認證，獎項"
+msgstr "标签，认证，奖励"
 
 msgctxt "labels_example"
 msgid "Organic"
@@ -1135,14 +1091,6 @@ msgctxt "lang_nl_be"
 msgid "Dutch"
 msgstr "荷蘭語"
 
-msgctxt "lang_note"
-msgid "Language most present and most highlighted on the product"
-msgstr "產品上的語言要清楚呈現"
-
-msgctxt "lang_other"
-msgid "other language"
-msgstr "其它語言"
-
 msgctxt "lang_pl"
 msgid "Polish"
 msgstr "波蘭語"
@@ -1186,6 +1134,14 @@ msgstr "越南語"
 msgctxt "lang_zh"
 msgid "Chinese"
 msgstr "漢語"
+
+msgctxt "lang_other"
+msgid "other language"
+msgstr "其它語言"
+
+msgctxt "lang_note"
+msgid "Language most present and most highlighted on the product"
+msgstr "產品上的語言要清楚呈現"
 
 msgctxt "language"
 msgid "en-US"
@@ -1297,7 +1253,7 @@ msgstr "你可以選擇一張或多張圖片:"
 
 msgctxt "manufacturing_places"
 msgid "Manufacturing or processing places"
-msgstr "生產地點"
+msgstr "制造或者加工场所"
 
 msgctxt "manufacturing_places_example"
 msgid "Montana, USA"
@@ -1339,6 +1295,7 @@ msgctxt "menu_add_a_product"
 msgid "Add a product"
 msgstr "新增產品"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "menu_add_a_product_link"
 msgid "/add-a-product"
 msgstr "/add-a-product"
@@ -1347,6 +1304,7 @@ msgctxt "menu_contribute"
 msgid "Contribute"
 msgstr "貢獻"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "menu_contribute_link"
 msgid "/contribute"
 msgstr "/contribute"
@@ -1355,6 +1313,7 @@ msgctxt "menu_discover"
 msgid "Discover"
 msgstr "探索"
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "menu_discover_link"
 msgid "/discover"
 msgstr "/discover"
@@ -1390,11 +1349,6 @@ msgstr "中等"
 msgctxt "moderate_quantity"
 msgid "moderate quantity"
 msgstr "中等量"
-
-# Please keep the same syntax and translate only the months
-msgctxt "months"
-msgid "['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']"
-msgstr "['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']"
 
 msgctxt "move_images_to_another_product"
 msgid "Move the images to another product"
@@ -1472,7 +1426,7 @@ msgctxt "nutrient_levels_info"
 msgid "Nutrient levels for 100 g"
 msgstr "每100公克的營養等級"
 
-# Ensure it is the same translation as in the translation in the tag file. If unsure, DO NOT TRANSLATE, otherwise it will break the site
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "nutrient_levels_link"
 msgid "/nutrient-levels"
 msgstr "/nutrient-levels"
@@ -1503,11 +1457,11 @@ msgstr "產品不包含營養 %s"
 
 msgctxt "nutrition_alt"
 msgid "Nutrition facts"
-msgstr "營養成分"
+msgstr "营养成分"
 
 msgctxt "nutrition_data"
 msgid "Nutrition facts"
-msgstr "營養成分"
+msgstr "营养成分"
 
 msgctxt "nutrition_data_average"
 msgid "Average nutrition facts for the %d products of the %s category for which nutrition facts are known (out of %d products)."
@@ -1579,7 +1533,7 @@ msgstr "標準差"
 
 msgctxt "nutrition_data_table"
 msgid "Nutrition facts"
-msgstr "營養成分"
+msgstr "营养成分"
 
 msgctxt "nutrition_data_table_note"
 msgid "The table lists by default nutriments that are often specified. Leave the field blank if it's not on the label.<br/>You can add extra nutriments (vitamins, minerals, cholesterol etc.)\n"
@@ -1624,7 +1578,7 @@ msgstr "或:"
 
 msgctxt "origins"
 msgid "Origin of ingredients"
-msgstr "配料來源"
+msgstr "成分来源"
 
 msgctxt "origins_example"
 msgid "California, USA"
@@ -1656,7 +1610,7 @@ msgstr "產品的原料非來自於 %s"
 
 msgctxt "packaging"
 msgid "Packaging"
-msgstr "包裝套件"
+msgstr "包装"
 
 msgctxt "packaging_example"
 msgid "Fresh, Canned, Frozen, Bottle, Box, Glass, Plastic..."
@@ -1952,7 +1906,7 @@ msgstr "您新增或編輯的產品"
 
 msgctxt "purchase_places"
 msgid "City, state and country where purchased"
-msgstr "購的買城市, 州及城鎮"
+msgstr "购买的城市、省份和国家"
 
 msgctxt "purchase_places_note"
 msgid "Indicate where you bought or saw the product (at least the country)"
@@ -1980,7 +1934,7 @@ msgstr "產品未販售於 %s"
 
 msgctxt "quantity"
 msgid "Quantity"
-msgstr "數量"
+msgstr "数量"
 
 msgctxt "quantity_example"
 msgid "2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound"
@@ -2333,11 +2287,20 @@ msgstr "送出照片中"
 
 msgctxt "serving_size"
 msgid "Serving size"
-msgstr "份量"
+msgstr "分量"
+
+msgctxt "serving_size_prepared"
+msgid ""
+msgstr ""
+""
 
 msgctxt "serving_size_example"
 msgid "60 g, 12 oz, 20cl, 2 fl oz"
 msgstr "60克, 12盎司, 20cl, 2液體盎司"
+
+msgctxt "serving_size_note"
+msgid "If the nutrition facts table contains values for the prepared product, indicate the total serving size of the prepared product (including added water or milk)."
+msgstr ""
 
 msgctxt "session_title"
 msgid "Sign-in"
@@ -2457,7 +2420,7 @@ msgstr "搜尋："
 
 msgctxt "traces"
 msgid "Traces"
-msgstr "追蹤"
+msgstr "痕迹"
 
 msgctxt "traces_example"
 msgid "Milk, Gluten, Nuts"
@@ -2576,10 +2539,6 @@ msgctxt "website"
 msgid "Site or blog address"
 msgstr "網站或部落格地址"
 
-msgctxt "weekdays"
-msgid "['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']"
-msgstr "['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']"
-
 msgctxt "windows_phone_app_badge"
 msgid "<img src=\"/images/misc/154x40_WP_Store_blk.png\" alt=\"Windows Phone Store\" width=\"154\" height=\"40\" />"
 msgstr "<img src=\"/images/misc/154x40_WP_Store_blk.png\" alt=\"Windows Phone Store\" width=\"154\" height=\"40\" />"
@@ -2685,8 +2644,8 @@ msgid "This product page is not complete. You can help to complete it by editing
 msgstr "此產品頁面不完整。您可以通過編輯它並從我們的照片中添加更多的資料, 或者通過使用 <a href=\"Https://android.openfoodfacts.org\"> android </a> 或 <a href=\"Https://ios.openfoodfacts.org\"> iPhone/iPad </a> 的應用程式來獲得更多的照片來説明完成它。謝謝！"
 
 msgctxt "title_separator"
-msgid " — "
-msgstr " - "
+msgid " - "
+msgstr ""
 
 msgctxt "recent_changes"
 msgid "Recent Changes"
@@ -2796,6 +2755,7 @@ msgctxt "footer_partners"
 msgid "Partners"
 msgstr ""
 
+# Do not translate without having the same exact string in the Tags template. Do not use spaces, special characters, only alphanumeric characters separated by hyphens
 msgctxt "footer_partners_link"
 msgid "/partners"
 msgstr ""
@@ -2954,5 +2914,193 @@ msgstr ""
 
 msgctxt "additives_classes"
 msgid "Functions"
+msgstr ""
+
+msgctxt "photos_and_data_check"
+msgid "Photos and data check"
+msgstr ""
+
+msgctxt "photos_and_data_check_description"
+msgid "Product pages can be marked as checked by experienced contributors who verify that the most recent photos are selected and cropped, and that all the product data that can be inferred from the product photos has been filled and is correct."
+msgstr ""
+
+msgctxt "photos_and_data_checked"
+msgid "Photos and data checked"
+msgstr ""
+
+msgctxt "i_checked_the_photos_and_data"
+msgid "I checked the photos and data."
+msgstr ""
+
+msgctxt "i_checked_the_photos_and_data_again"
+msgid "I checked the photos and data again."
+msgstr ""
+
+msgctxt "last_check_dates_p"
+msgid "Last check dates"
+msgstr ""
+
+msgctxt "last_check_dates_s"
+msgid "Last check date"
+msgstr ""
+
+msgctxt "product_last_checked"
+msgid "Last check of product page on"
+msgstr ""
+
+msgctxt "product_other_information"
+msgid "Other information"
+msgstr ""
+
+msgctxt "producer_version_id"
+msgid "Producer version identifier"
+msgstr ""
+
+msgctxt "net_weight"
+msgid "Net weight"
+msgstr ""
+
+msgctxt "drained_weight"
+msgid "Drained weight"
+msgstr ""
+
+msgctxt "volume"
+msgid "Volume"
+msgstr ""
+
+msgctxt "other_information"
+msgid "Other information"
+msgstr ""
+
+msgctxt "conservation_conditions"
+msgid "Conservation conditions"
+msgstr ""
+
+msgctxt "recycling_instructions_to_recycle"
+msgid "Recycling instructions - To recycle"
+msgstr ""
+
+msgctxt "recycling_instructions_to_discard"
+msgid "Recycling instructions - To discard"
+msgstr ""
+
+msgctxt "checkers_products"
+msgid "Products checked by %s"
+msgstr ""
+
+msgctxt "checkers_without_products"
+msgid "Products not checked by %s"
+msgstr ""
+
+msgctxt "correctors_products"
+msgid "Products corrected by %s"
+msgstr ""
+
+msgctxt "correctors_without_products"
+msgid "Products not corrected by %s"
+msgstr ""
+
+msgctxt "editors_products"
+msgid "Products edited by %s"
+msgstr ""
+
+msgctxt "editors_without_products"
+msgid "Products not edited by %s"
+msgstr ""
+
+msgctxt "informers_products"
+msgid "Products completed by %s"
+msgstr ""
+
+msgctxt "informers_without_products"
+msgid "Products not completed by %s"
+msgstr ""
+
+msgctxt "photographers_products"
+msgid "Products photographed by %s"
+msgstr ""
+
+msgctxt "photographers_without_products"
+msgid "Products not photographed by %s"
+msgstr ""
+
+msgctxt "user_s_page"
+msgid "%s's page"
+msgstr ""
+
+msgctxt "checkers_products"
+msgid "Products checked by %s"
+msgstr ""
+
+msgctxt "checkers_without_products"
+msgid "Products not checked by %s"
+msgstr ""
+
+msgctxt "correctors_products"
+msgid "Products corrected by %s"
+msgstr ""
+
+msgctxt "correctors_without_products"
+msgid "Products not corrected by %s"
+msgstr ""
+
+msgctxt "editors_products"
+msgid "Products edited by %s"
+msgstr ""
+
+msgctxt "editors_without_products"
+msgid "Products not edited by %s"
+msgstr ""
+
+msgctxt "informers_products"
+msgid "Products completed by %s"
+msgstr ""
+
+msgctxt "informers_without_products"
+msgid "Products not completed by %s"
+msgstr ""
+
+msgctxt "photographers_products"
+msgid "Products photographed by %s"
+msgstr ""
+
+msgctxt "photographers_without_products"
+msgid "Products not photographed by %s"
+msgstr ""
+
+msgctxt "user_s_page"
+msgid "%s's page"
+msgstr ""
+
+msgctxt "obsolete"
+msgid "The product is no longer sold."
+msgstr ""
+
+msgctxt "obsolete_since_date"
+msgid "Withdrawal date"
+msgstr ""
+
+msgctxt "obsolete_since_date_note"
+msgid "Format: YYYY or YYYY-MM"
+msgstr ""
+
+msgctxt "obsolete_warning"
+msgid "Important note: this product is no longer sold. The data is kept for reference only. This product does not appear in regular searches and is not taken into account for statistics."
+msgstr ""
+
+msgctxt "get_the_app"
+msgid "Get the app"
+msgstr ""
+
+msgctxt "get_the_app_android"
+msgid "Get the Android app"
+msgstr ""
+
+msgctxt "get_the_app_iphone"
+msgid "Get the iPhone app"
+msgstr ""
+
+msgctxt "get_the_app_ipad"
+msgid "Get the iPad app"
 msgstr ""
 

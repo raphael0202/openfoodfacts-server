@@ -30,6 +30,7 @@ BEGIN
 	@EXPORT = qw();
 	@EXPORT_OK = qw(
 		%admins
+		%moderators
 		
 		$server_domain
 		@ssl_subdomains
@@ -42,8 +43,6 @@ BEGIN
 		$facebook_app_id
 		$facebook_app_secret
 		
-		$csrf_secret
-		
 		$google_cloud_vision_api_key
 		
 		$crowdin_project_identifier
@@ -51,6 +50,8 @@ BEGIN
 		
 		$mongodb
 		$mongodb_host
+
+		$memd_servers
 	
 		$google_analytics
 		
@@ -67,9 +68,12 @@ BEGIN
 		%wiki_texts
 
 		@product_fields
+		@product_other_fields
 		@display_fields
+		@display_other_fields
 		@drilldown_fields
 		@taxonomy_fields
+		@export_fields
 		
 		%tesseract_ocr_available_languages
 		
@@ -86,14 +90,16 @@ use ProductOpener::Config2;
 
 %admins = map { $_ => 1 } qw(
 agamitsudo
+aleene
 bcatelin
-beniben
 bojackhorseman
 hangy
 javichu
 kyzh
+lafel
 lucaa
-scanparty-franprix-05-2016
+mbe
+moon-rabbit
 sebleouf
 segundo
 stephane
@@ -101,7 +107,11 @@ tacinte
 tacite
 teolemon
 twoflower
-scanparty-franprix-05-2016
+
+);
+
+%moderators = map { $_ => 1 } qw(
+
 );
 
 $options{users_who_can_upload_small_images} = {
@@ -144,6 +154,22 @@ systeme-u
 		slack_channel_edit-alert
 	)],
 },
+
+{
+        name => "Yuka - checked",
+        conditions => [
+                ["user_id", "kiliweb"],
+                ["in_states_tags", "en:checked"],
+        ],
+        actions => [
+                ["ignore"],
+        ],
+        notifications => [ qw (
+                slack_channel_edit-alert
+        )],
+},
+
+
 {
         name => "Yuka - systeme-u",
         conditions => [
@@ -158,10 +184,23 @@ systeme-u
         )],
 },
 {
-        name => "stephane - systeme-u",
+        name => "Yuka - fleury michon",
         conditions => [
-                ["user_id", "stephane2"],
-                ["in_editors_tags", "systeme-u"],
+                ["user_id", "kiliweb"],
+                ["in_editors_tags", "fleury-michon"],
+        ],
+        actions => [
+                ["ignore"],
+        ],
+        notifications => [ qw (
+                slack_channel_edit-alert
+        )],
+},
+{
+        name => "Yuka - Casino",
+        conditions => [
+                ["user_id", "kiliweb"],
+                ["in_editors_tags", "casino"],
         ],
         actions => [
                 ["ignore"],
@@ -208,6 +247,7 @@ $server_domain = $ProductOpener::Config2::server_domain;
 @ssl_subdomains = @ProductOpener::Config2::ssl_subdomains;
 $mongodb = $ProductOpener::Config2::mongodb;
 $mongodb_host = $ProductOpener::Config2::mongodb_host;
+$memd_servers = $ProductOpener::Config2::memd_servers;
 
 # server paths
 $www_root = $ProductOpener::Config2::www_root;
@@ -216,7 +256,6 @@ $data_root = $ProductOpener::Config2::data_root;
 $facebook_app_id = $ProductOpener::Config2::facebook_app_id;
 $facebook_app_secret = $ProductOpener::Config2::facebook_app_secret;
 
-$csrf_secret = $ProductOpener::Config2::csrf_secret;
 $google_cloud_vision_api_key = $ProductOpener::Config2::google_cloud_vision_api_key;
 
 $crowdin_project_identifier = $ProductOpener::Config2::crowdin_project_identifier;
@@ -303,6 +342,31 @@ $options{opensearch_image} = <<XML
 XML
 ;
 
+
+# Nutriscore: milk and drinkable yogurts are not considered beverages
+# list only categories that are under en:beverages
+$options{categories_not_considered_as_beverages_for_nutriscore} = [qw(
+en:plant-milks
+en:milks
+en:dairy-drinks
+en:meal-replacement
+en:dairy-drinks-substitutes
+en:chocolate-powders
+en:soups
+en:coffees
+en:teas
+en:herbal-teas
+)];
+
+# exceptions
+$options{categories_considered_as_beverages_for_nutriscore} = [qw(
+en:tea-based-beverages
+en:iced-teas
+en:herbal-tea-beverages
+en:coffee-beverages
+en:coffee-drinks
+)];
+
 $options{categories_exempted_from_nutriscore} = [qw(
 en:baby-foods
 en:baby-milks
@@ -310,10 +374,20 @@ en:alcoholic-beverages
 en:waters
 en:coffees
 en:teas
+en:herbal-teas
 fr:levure
 fr:levures
 en:honeys
 en:vinegars
+)];
+
+# exceptions
+$options{categories_not_exempted_from_nutriscore} = [qw(
+en:tea-based-beverages
+en:iced-teas
+en:herbal-tea-beverages
+en:coffee-beverages
+en:coffee-drinks
 )];
 
 $options{categories_exempted_from_nutrient_levels} = [qw(
@@ -322,9 +396,247 @@ en:baby-milks
 en:alcoholic-beverages
 en:coffees
 en:teas
+en:yeasts
 fr:levure
 fr:levures
 )];
+
+
+
+
+%wiki_texts = (
+
+"en/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_English?action=raw",
+"es/descubrir" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Spanish?action=raw",
+"fr/decouvrir" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_French?action=raw",
+"he/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Hebrew?action=raw",
+"ar/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Arabic?action=raw",
+"pt/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Portuguese?action=raw",
+"jp/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Japanese?action=raw",
+
+"de/contribute" => "https://en.wiki.openfoodfacts.org/Translations_-_Contribute_page_-_German?action=raw",
+"en/contribute" => "https://en.wiki.openfoodfacts.org/Translations_-_Contribute_page_-_English?action=raw",
+"es/contribuir" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Spanish?action=raw",
+"fr/contribuer" => "https://en.wiki.openfoodfacts.org/Translations_-_Contribute_page_-_French?action=raw",
+"nl/contribute" => "https://en.wiki.openfoodfacts.org/Translations_-_Contribute_page_-_Dutch?action=raw",
+
+"en/press" => "https://en.wiki.openfoodfacts.org/Translations_-_Press_-_English?action=raw",
+"fr/presse" => "https://en.wiki.openfoodfacts.org/Translations_-_Press_-_French?action=raw",
+"el/press" => "https://en.wiki.openfoodfacts.org/Translations_-_Press_-_Greek?action=raw",
+
+"en/code-of-conduct" => "https://en.wiki.openfoodfacts.org/Translations_-_Code_of_conduct_-_English?action=raw",
+"fr/code-de-conduite" => "https://en.wiki.openfoodfacts.org/Translations_-_Code_of_conduct_-_French?action=raw",
+"ja/code-of-conduct" => "https://en.wiki.openfoodfacts.org/Translations_-_Code_of_conduct_-_Japanese?action=raw",
+"de/code-of-conduct" => "https://en.wiki.openfoodfacts.org/Translations_-_Code_of_conduct_-_German?action=raw",
+
+"fr/notetondistrib" => "https://en.wiki.openfoodfacts.org/Translations_-_Vending_machines_-_French?action=raw",
+"en/rateyourvendingmachine" => "https://en.wiki.openfoodfacts.org/Translations_-_Vending_machines_-_English?action=raw",
+
+);
+
+
+# fields for which we will load taxonomies
+
+@taxonomy_fields = qw(states countries languages labels categories additives additives_classes
+ vitamins minerals amino_acids nucleotides other_nutritional_substances allergens traces
+ nutrient_levels misc ingredients nova_groups);
+
+
+# fields in product edit form, above ingredients and nutrition facts
+
+@product_fields = qw(quantity packaging brands categories labels origins manufacturing_places
+ emb_codes link expiration_date purchase_places stores countries  );
+
+# fields currently not shown in the default edit form, can be used in imports or advanced edit forms
+
+@product_other_fields = qw(
+producter_product_id producer_version_id
+net_weight_value net_weight_unit drained_weight_value drained_weight_unit volume_value volume_unit
+other_information conservation_conditions recycling_instructions_to_recycle
+ recycling_instructions_to_discard
+nutrition_grade_fr_producer
+recipe_idea origin customer_service producer preparation warning 
+);
+
+
+# fields shown on product page
+# do not show purchase_places
+
+@display_fields = qw(generic_name quantity packaging brands categories labels origin origins 
+producer manufacturing_places emb_codes link stores countries);
+
+# fields displayed in a new section after the nutrition facts
+
+@display_other_fields = qw(other_information preparation recipe_idea warning conservation_conditions 
+recycling_instructions_to_recycle recycling_instructions_to_discard customer_service);
+
+
+# fields for drilldown facet navigation
+
+@drilldown_fields = qw(
+brands
+categories
+labels
+packaging
+origins
+manufacturing_places
+emb_codes
+ingredients
+additives
+vitamins
+minerals
+amino_acids
+nucleotides
+other_nutritional_substances
+allergens
+traces
+nova_groups
+nutrition_grades
+misc
+languages
+users
+states
+entry_dates
+last_edit_dates
+last_check_dates
+);
+
+
+@export_fields = qw(
+code
+creator
+created_t
+last_modified_t
+product_name
+generic_name
+quantity
+packaging
+brands 
+categories 
+origins
+manufacturing_places
+labels
+emb_codes
+cities
+purchase_places
+stores
+countries
+ingredients_text
+allergens
+traces
+serving_size
+serving_quantity
+no_nutriments
+additives_n
+additives
+ingredients_from_palm_oil_n
+ingredients_from_palm_oil
+ingredients_that_may_be_from_palm_oil_n
+ingredients_that_may_be_from_palm_oil
+nutrition_grade_fr
+nova_group
+pnns_groups_1
+pnns_groups_2
+states
+);
+
+
+# for ingredients OCR, we use tesseract-ocr
+# on debian, dictionaries are in /usr/share/tesseract-ocr/tessdata
+# %tesseract_ocr_available_languages provides mapping between OFF 2 letter language codes
+# and the available tesseract dictionaries
+# Tesseract uses 3-character ISO 639-2 language codes
+# all dictionaries: apt-get install tesseract-ocr-all
+
+%tesseract_ocr_available_languages = (
+	en => "eng",
+	de => "deu",
+	es => "spa",
+	fr => "fra",
+	it => "ita",
+#	ja => "jpn", # not available with tesseract 2
+	nl => "nld",
+);
+
+# weblink definitions for known tags, ie. wikidata:en:Q123 => https://www.wikidata.org/wiki/Q123
+
+%weblink_templates = (
+
+	'wikidata:en' => { href => 'https://www.wikidata.org/wiki/%s', text => 'Wikidata', parse => sub
+	{
+		my ($url) = @_;
+		if ($url =~ /^https?:\/\/www.wikidata.org\/wiki\/(Q\d+)$/) {
+			return $1
+		}
+
+		return;
+	} },
+
+);
+
+# allow moving products to other instances of Product Opener on the same server
+# e.g. OFF -> OBF
+$options{other_servers} = {
+obf =>
+{
+	name => "Open Beauty Facts",
+	data_root => "/srv/obf",
+	www_root => "/srv/obf/html",
+	mongodb => "obf",
+	domain => "openbeautyfacts.org",
+},
+off =>
+{
+	name => "Open Food Facts",
+	data_root => "/srv/off",
+	www_root => "/srv/off/html",
+	mongodb => "off",
+	domain => "openfoodfacts.org",
+},
+opf =>
+{
+	name => "Open Products Facts",
+	data_root => "/srv/opf",
+	www_root => "/srv/opf/html",
+	mongodb => "opf",
+	domain => "openproductsfacts.org",
+},
+opff =>
+{
+	prefix => "opff",
+	name => "Open Pet Food Facts",
+	data_root => "/srv/opff",
+	www_root => "/srv/opff/html",
+	mongodb => "opff",
+	domain => "openpetfoodfacts.org",
+}
+};
+
+
+# used to rename texts and to redirect to the new name
+$options{redirect_texts} = {
+
+	"en/nova-groups-for-food-processing" => "nova",
+	"fr/score-nutritionnel-france" => "nutriscore",
+	"fr/score-nutritionnel-experimental-france" => "nutriscore",
+	"fr/classification-nova-pour-la-transformation-des-aliments" => "nova",
+};
+
+
+$options{display_tag_additives} = [
+
+	'@additives_classes',
+	'wikipedia',
+	'title:efsa_evaluation_overexposure_risk_title',
+	'efsa_evaluation',
+	'efsa_evaluation_overexposure_risk',	
+	'efsa_evaluation_exposure_table',
+#	'@efsa_evaluation_exposure_mean_greater_than_noael',
+#	'@efsa_evaluation_exposure_95th_greater_than_noael',
+#	'@efsa_evaluation_exposure_mean_greater_than_adi',
+#	'@efsa_evaluation_exposure_95th_greater_than_adi',
+
+];
 
 
 $options{nova_groups_tags} = {
@@ -339,6 +651,7 @@ $options{nova_groups_tags} = {
 "categories/en:sugars" => 2,
 "categories/en:honeys" => 2,
 "categories/en:maple-syrups" => 2,
+"categories/en:spices" => 2,
 
 # group 3 tags will not be applied to food identified as group 2
 
@@ -347,10 +660,12 @@ $options{nova_groups_tags} = {
 "ingredients/en:preservative" => 3,
 
 "ingredients/en:salt" => 3,
+"ingredients/en:spice" => 3,
+"ingredients/en:pepper" => 3,
 "ingredients/en:sugar" => 3,
 "ingredients/en:vegetable-oil" => 3,
 "ingredients/en:vegetal-oil" => 3,
-"categories/en:fats" => 2,
+"ingredients/en:vegetable-fat" => 3,
 "ingredients/en:butter" => 3,
 "ingredients/en:honey" => 3,
 "ingredients/en:maple-syrup" => 3,
@@ -373,10 +688,20 @@ $options{nova_groups_tags} = {
 # other categories that we can consider to be at least group 3
 
 "categories/en:prepared-meats" => 3,
+"categories/en:terrines" => 3,
+"categories/en:pates" => 3,
+"categories/en:pastas" => 3,
+"categories/en:breakfast-cereals" => 3,
+"categories/en:tofu" => 3,
+"categories/en:alcoholic-beverages" => 3,
+"categories/en:meals" => 3,
+# yogurts can be group 1 according to NOVA paper
+#"categories/en:yogurts" => 3,
 
 
 # group 3 additives
 
+"additives/en:e202" => 3, # potassium nitrite
 "additives/en:e249" => 3, # potassium nitrite
 "additives/en:e250" => 3, # sodium nitrite
 "additives/en:e251" => 3, # potassium nitrate
@@ -587,176 +912,12 @@ $options{nova_groups_tags} = {
 "additives/en:e450" => 4,
 "additives/en:e451" => 4,
 "additives/en:e452" => 4,
+"additives/en:e461" => 4,
 "additives/en:e471" => 4,
 "additives/en:e14xx" => 4,
 
 };
 
 
-
-
-%wiki_texts = (
-
-"en/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_English?action=raw",
-"es/descubrir" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Spanish?action=raw",
-"fr/decouvrir" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_French?action=raw",
-"he/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Hebrew?action=raw",
-"ar/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Arabic?action=raw",
-"pt/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Portuguese?action=raw",
-"jp/discover" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Japanese?action=raw",
-
-"de/contribute" => "https://en.wiki.openfoodfacts.org/Translations_-_Contribute_page_-_German?action=raw",
-"en/contribute" => "https://en.wiki.openfoodfacts.org/Translations_-_Contribute_page_-_English?action=raw",
-"es/contribuir" => "https://en.wiki.openfoodfacts.org/Translations_-_Discover_page_-_Spanish?action=raw",
-"fr/contribuer" => "https://en.wiki.openfoodfacts.org/Translations_-_Contribute_page_-_French?action=raw",
-"nl/contribute" => "https://en.wiki.openfoodfacts.org/Translations_-_Contribute_page_-_Dutch?action=raw",
-
-"en/press" => "https://en.wiki.openfoodfacts.org/Translations_-_Press_-_English?action=raw",
-"fr/presse" => "https://en.wiki.openfoodfacts.org/Translations_-_Press_-_French?action=raw",
-"el/press" => "https://en.wiki.openfoodfacts.org/Translations_-_Press_-_Greek?action=raw",
-
-"en/code-of-conduct" => "https://en.wiki.openfoodfacts.org/Translations_-_Code_of_conduct_-_English?action=raw",
-"fr/code-de-conduite" => "https://en.wiki.openfoodfacts.org/Translations_-_Code_of_conduct_-_French?action=raw",
-"ja/code-of-conduct" => "https://en.wiki.openfoodfacts.org/Translations_-_Code_of_conduct_-_Japanese?action=raw",
-"de/code-of-conduct" => "https://en.wiki.openfoodfacts.org/Translations_-_Code_of_conduct_-_German?action=raw",
-
-"fr/notetondistrib" => "https://en.wiki.openfoodfacts.org/Translations_-_Vending_machines_-_French?action=raw",
-"en/rateyourvendingmachine" => "https://en.wiki.openfoodfacts.org/Translations_-_Vending_machines_-_English?action=raw",
-
-);
-
-
-# fields for which we will load taxonomies
-
-@taxonomy_fields = qw(states countries languages labels categories additives additives_classes vitamins minerals amino_acids nucleotides other_nutritional_substances allergens traces nutrient_levels misc ingredients nova_groups);
-
-
-# fields in product edit form
-
-@product_fields = qw(quantity packaging brands categories labels origins manufacturing_places emb_codes link expiration_date purchase_places stores countries  );
-
-
-# fields shown on product page
-# do not show purchase_places
-
-@display_fields = qw(generic_name quantity packaging brands categories labels origins manufacturing_places emb_codes link stores countries);
-
-
-# fields for drilldown facet navigation
-
-@drilldown_fields = qw(
-brands
-categories
-labels
-packaging
-origins
-manufacturing_places
-emb_codes
-ingredients
-additives
-vitamins
-minerals
-amino_acids
-nucleotides
-other_nutritional_substances
-allergens
-traces
-nova_groups
-nutrition_grades
-misc
-languages
-users
-states
-entry_dates
-last_edit_dates
-);
-
-
-# for ingredients OCR, we use tesseract-ocr
-# on debian, dictionaries are in /usr/share/tesseract-ocr/tessdata
-# %tesseract_ocr_available_languages provides mapping between OFF 2 letter language codes
-# and the available tesseract dictionaries
-# Tesseract uses 3-character ISO 639-2 language codes
-# all dictionaries: apt-get install tesseract-ocr-all
-
-%tesseract_ocr_available_languages = (
-	en => "eng",
-	de => "deu",
-	es => "spa",
-	fr => "fra",
-	it => "ita",
-#	ja => "jpn", # not available with tesseract 2
-	nl => "nld",
-);
-
-# weblink definitions for known tags, ie. wikidata:en:Q123 => https://www.wikidata.org/wiki/Q123
-
-%weblink_templates = (
-
-	'wikidata:en' => { href => 'https://www.wikidata.org/wiki/%s', text => 'Wikidata', parse => sub
-	{
-		my ($url) = @_;
-		if ($url =~ /^https?:\/\/www.wikidata.org\/wiki\/(Q\d+)$/) {
-			return $1
-		}
-
-		return;
-	} },
-
-);
-
-# allow moving products to other instances of Product Opener on the same server
-# e.g. OFF -> OBF
-$options{other_servers} = {
-obf =>
-{
-	name => "Open Beauty Facts",
-	data_root => "/srv/obf",
-	www_root => "/srv/obf/html",
-	mongodb => "obf",
-	domain => "openbeautyfacts.org",
-},
-off =>
-{
-	name => "Open Food Facts",
-	data_root => "/srv/off",
-	www_root => "/srv/off/html",
-	mongodb => "off",
-	domain => "openfoodfacts.org",
-},
-opf =>
-{
-	name => "Open Products Facts",
-	data_root => "/srv/opf",
-	www_root => "/srv/opf/html",
-	mongodb => "opf",
-	domain => "openproductsfacts.org",
-},
-opff =>
-{
-	prefix => "opff",
-	name => "Open Pet Food Facts",
-	data_root => "/srv/opff",
-	www_root => "/srv/opff/html",
-	mongodb => "opff",
-	domain => "openpetfoodfacts.org",
-}
-};
-
-
-$options{display_tag_additives} = [
-
-	'@additives_classes',
-	'wikipedia',
-	'title:efsa_evaluation_overexposure_risk_title',
-	'efsa_evaluation',
-	'efsa_evaluation_overexposure_risk',	
-	'efsa_evaluation_exposure_table',
-#	'@efsa_evaluation_exposure_mean_greater_than_noael',
-#	'@efsa_evaluation_exposure_95th_greater_than_noael',
-#	'@efsa_evaluation_exposure_mean_greater_than_adi',
-#	'@efsa_evaluation_exposure_95th_greater_than_adi',
-
-];
 
 1;

@@ -104,6 +104,10 @@ else {
 	#my @app_fields = qw(product_name brands quantity);
 	my @app_fields = qw(product_name generic_name quantity packaging brands categories labels origins manufacturing_places emb_codes link expiration_date purchase_places stores countries  );
 
+	# admin field to set a creator
+	if (($User_id eq 'stephane') or ($User_id eq 'teolemon')) {
+		push @app_fields, "creator";
+	}
 	
 	# generate a list of potential languages for language specific fields
 	my %param_langs = ();
@@ -113,6 +117,14 @@ else {
 				$param_langs{$2} = 1;
 			}
 		}
+		# some apps may send pt-BR
+		elsif ($param =~ /^(.*)_(\w\w)-(\w\w)$/) {
+			if (defined $language_fields{$1}) {
+				$param_langs{$2} = 1;
+				# set the product_name_pt value to the value of product_name_pt-BR
+				param($1 . "_" . $2, param($1 . "_" . $2 . "-" . $3));
+			}
+		}		
 	}
 	my @param_langs = keys %param_langs;
 	
@@ -133,37 +145,11 @@ else {
 		
 			my $additional_fields = remove_tags_and_quote(decode utf8=>param("add_$field"));
 			
+			add_tags_to_field($product_ref, $lc, $field, $additional_fields);
+			
 			print STDERR "product_jqm_multilingual.pl - lc: $lc - adding value to field $field - additional: $additional_fields - existing: $product_ref->{$field}\n";			
-			
-			my $current_field = $product_ref->{$field};
-
-			my %existing = ();
-			foreach my $tagid (@{$product_ref->{$field . "_tags"}}) {
-				$existing{$tagid} = 1;
-			}	
-			
-			foreach my $tag (split(/,/, $additional_fields)) {
-
-				my $tagid;
-
-				if (defined $taxonomy_fields{$field}) {
-					$tagid = get_taxonomyid(canonicalize_taxonomy_tag($lc, $field, $tag));
-				}
-				else {
-					$tagid = get_fileid($tag);
-				}
-				if (not exists $existing{$tagid}) {
-					print STDERR "product_jqm_multilingual.pl - adding $tagid to $field: $product_ref->{$field}\n";
-					$product_ref->{$field} .= ", $tag";
-				}
 				
-			}
-			
-			if ($product_ref->{$field} =~ /^, /) {
-				$product_ref->{$field} = $';
-			}			
-			
-			compute_field_tags($product_ref, $field);			
+			compute_field_tags($product_ref, $lc, $field);			
 			
 		}
 	
@@ -175,7 +161,7 @@ else {
 				$product_ref->{$field_lc} = $product_ref->{$field};
 			}			
 			
-			compute_field_tags($product_ref, $field);			
+			compute_field_tags($product_ref, $lc, $field);			
 			
 		}
 		
@@ -184,7 +170,7 @@ else {
 				my $field_lc = $field . '_' . $param_lang;
 				if (defined param($field_lc)) {
 					$product_ref->{$field_lc} = remove_tags_and_quote(decode utf8=>param($field_lc));
-					compute_field_tags($product_ref, $field_lc);
+					compute_field_tags($product_ref, $lc, $field_lc);
 				}
 			}
 		}
@@ -225,12 +211,12 @@ else {
 		}
 	}	
 	
+	compute_languages($product_ref); # need languages for allergens detection and cleaning ingredients
 	
 	# Ingredients classes
+	clean_ingredients_text($product_ref);
 	extract_ingredients_from_text($product_ref);
 	extract_ingredients_classes_from_text($product_ref);
-
-	compute_languages($product_ref); # need languages for allergens detection
 	detect_allergens_from_text($product_ref);
 	
 	# Nutrition data
@@ -276,44 +262,10 @@ else {
 		my $value = remove_tags_and_quote(decode utf8=>param("nutriment_${enid}"));
 		my $unit = remove_tags_and_quote(decode utf8=>param("nutriment_${enid}_unit"));
 		my $label = remove_tags_and_quote(decode utf8=>param("nutriment_${enid}_label"));
-		
-		if ($value =~ /nan/i) {
-			$value = '';
-		}
-		
-		if ($nid eq 'alcohol') {
-			$unit = '% vol';
-		}
-		
+
 		my $modifier = undef;
 		
-		if ($value =~ /(\&lt;=|<=|\N{U+2264})( )?/) {
-			$value =~ s/(\&lt;=|<=|\N{U+2264})( )?//;
-			$modifier = "\N{U+2264}";
-		}
-		if ($value =~ /(\&lt;|<|max|maxi|maximum|inf|inférieur|inferieur|less)( )?/) {
-			$value =~ s/(\&lt;|<|min|minimum|max|maxi|maximum|environ)( )?//;
-			$modifier = '<';
-		}
-		if ($value =~ /(\&gt;=|>=|\N{U+2265})/) {
-			$value =~ s/(\&gt;=|>=|\N{U+2265})( )?//;
-			$modifier = "\N{U+2265}";
-		}
-		if ($value =~ /(\&gt;|>|min|mini|minimum|greater|more)/) {
-			$value =~ s/(\&gt;|>|min|mini|minimum|greater|more)( )?//;
-			$modifier = '>';
-		}
-		if ($value =~ /(env|environ|about|~|≈)/) {
-			$value =~ s/(env|environ|about|~|≈)( )?//;
-			$modifier = '~';
-		}			
-		if ($value =~ /trace|traces/) {
-			$value = 0;
-			$modifier = '~';
-		}
-		if ($value !~ /\./) {
-			$value =~ s/,/\./;
-		}
+		normalize_nutriment_value_and_modifier(\$value, \$modifier);
 		
 		# New label?
 		my $new_nid = undef;
@@ -345,28 +297,7 @@ else {
 				delete $product_ref->{nutriments}{$nid . "_serving"};
 		}
 		else {
-			if ((defined $modifier) and ($modifier ne '')) {
-				$product_ref->{nutriments}{$nid . "_modifier"} = $modifier;
-			}
-			else {
-				delete $product_ref->{nutriments}{$nid . "_modifier"};
-			}
-			$product_ref->{nutriments}{$nid . "_unit"} = $unit;		
-			$product_ref->{nutriments}{$nid . "_value"} = $value;
-			if (((uc($unit) eq 'IU') or (uc($unit) eq 'UI')) and (exists $Nutriments{$nid}) and ($Nutriments{$nid}{iu} > 0)) {
-				$value = $value * $Nutriments{$nid}{iu} ;
-				$unit = $Nutriments{$nid}{unit};
-			}
-			elsif  (($unit eq '% DV') and (exists $Nutriments{$nid}) and ($Nutriments{$nid}{dv} > 0)) {
-				$value = $value / 100 * $Nutriments{$nid}{dv} ;
-				$unit = $Nutriments{$nid}{unit};
-			}
-			if ($nid eq 'water-hardness') {
-				$product_ref->{nutriments}{$nid} = unit_to_mmoll($value, $unit);
-			}
-			else {
-				$product_ref->{nutriments}{$nid} = unit_to_g($value, $unit);
-			}
+			assign_nid_modifier_value_and_unit($product_ref, $nid, $modifier, $value, $unit);
 		}
 	}
 	
