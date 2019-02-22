@@ -46,6 +46,7 @@ requires 'Data::Dumper::AutoEncode';
 requires 'XML::Rules';
 requires 'Data::GUID';
 requires 'Email::Stuffer';
+requires 'Text::CSV', '>= 1.99, < 2.0';
 
 # Logging
 requires 'Log::Any', '>= 1.705';
