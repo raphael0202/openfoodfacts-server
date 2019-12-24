@@ -39013,6 +39013,10 @@ fr:Tartelettes, tartelette
 nl:Taartjes
 
 <en:Tartlets
+en:Apple tartlets, Apple tartlet
+fr:Tartelettes aux pommes, Tartelette aux pomme, Tartelettes à la pomme, Tartelette à la pomme
+
+<en:Tartlets
 en:Chocolate tartlets
 fr:Tartelettes au chocolat, Tartelette au chocolat
 nl:Chocolade taartjes
